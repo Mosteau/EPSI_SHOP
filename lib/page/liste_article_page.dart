@@ -26,11 +26,10 @@ class ListeArticlePage extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     context.go('/panier');
-                  }, // Affiche le nombre d'articles dans le panier avec watch
+                  },
                   icon: Text(context.watch<Cart>().getAll().length.toString()))
             ]),
         body: FutureBuilder<List<Article>>(
-            //Appel de la fonction fetchListArticle
             future: fetchListArticle(),
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data != null) {

@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 // Page de détail d'un article
 class DetailArticlePage extends StatelessWidget {
-  // Constructeur de la classe
   const DetailArticlePage({super.key, required this.article});
   
   // ignore: prefer_typing_uninitialized_variables
@@ -15,7 +14,6 @@ class DetailArticlePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // retourne un Scaffold vide
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -24,7 +22,7 @@ class DetailArticlePage extends StatelessWidget {
             IconButton(
                 onPressed: () {
                   context.go('/panier');
-                }, // Affiche le nombre d'articles dans le panier avec watch
+                },
                 icon: Text(context.watch<Cart>().getAll().length.toString()))
           ]),
       body: SingleChildScrollView(
