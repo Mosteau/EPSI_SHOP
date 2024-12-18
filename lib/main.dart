@@ -7,22 +7,23 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-
 // Main pour lancer l'application
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
-  final router = GoRouter(routes:
-  [
-    GoRoute(
-      path: "/",
-      builder: (ctx, state) => ListeArticlePage(),
-      routes:[
-        GoRoute(path: "detail", 
-          builder: (ctx, state) => DetailArticlePage(article:state.extra as Article),
+  MyApp({super.key});
+  final router = GoRouter(
+    routes: [
+      GoRoute(
+        path: "/",
+        builder: (ctx, state) => ListeArticlePage(),
+        routes: [
+          GoRoute(
+            path: "detail",
+            builder: (ctx, state) =>
+                DetailArticlePage(article: state.extra as Article),
           ),
           GoRoute(
             path: "panier",

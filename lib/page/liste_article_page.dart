@@ -20,15 +20,18 @@ class ListeArticlePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            title: Text('EPSI Shop'),
-            actions: [
-              IconButton(
-                  onPressed: () {
-                    context.go('/panier');
-                  },
-                  icon: Text(context.watch<Cart>().getAll().length.toString()))
-            ]),
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: const Text('EPSI Shop'),
+          actions: [
+            IconButton(
+              onPressed: () => context.go('/panier'),
+              icon: Badge(
+                label: Text(context.watch<Cart>().getAll().length.toString()),
+                child: const Icon(Icons.shopping_cart),
+              ),
+            ),
+          ],
+        ),
         body: FutureBuilder<List<Article>>(
             future: fetchListArticle(),
             builder: (context, snapshot) {

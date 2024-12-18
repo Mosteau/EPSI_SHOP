@@ -9,7 +9,8 @@ class ListPanierPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = context.watch<Cart>();
     final articles = cart.getAll();
-    final total = articles.fold<int>(0, (int sum, article) => sum + article.prix.toInt());
+    final totalHT = articles.fold<int>(0, (int sum, article) => sum + article.prix.toInt());
+    final totalTTC = totalHT * 1.2;
 
     return Scaffold(
       appBar: AppBar(
@@ -37,9 +38,26 @@ class ListPanierPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text(
-              "Total : ${total.toStringAsFixed(2)} €",
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            child: Column(
+              children: [
+                Text(
+                  "Total HT : ${totalHT.toStringAsFixed(2)} €",
+                  style: const TextStyle(fontSize: 16),
+                ),
+                Text(
+                  "Total TTC : ${totalTTC.toStringAsFixed(2)} €",
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                if (articles.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                      },
+                      child: const Text("Procéder au paiement"),
+                    ),
+                  ),
+              ],
             ),
           ),
         ],
