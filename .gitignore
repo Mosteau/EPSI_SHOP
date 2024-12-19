@@ -8,6 +8,7 @@
 .history
 .svn/
 migrate_working_dir/
+!/releases/*.apk
 
 # IDE - IntelliJ
 *.iml

@@ -52,7 +52,6 @@ class ListeArticlePage extends StatelessWidget {
     final res = await get(Uri.parse("https://fakestoreapi.com/products"));
     if (res.statusCode == 200) {
       //Les transformer en Liste d'articles
-      print("réponse ${res.body}");
       final listMapArticles = jsonDecode(res.body) as List<dynamic>;
       //Mappage de chaque élément de la liste JSON en Article
       return listMapArticles
